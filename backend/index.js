@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const app = express();
-const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
