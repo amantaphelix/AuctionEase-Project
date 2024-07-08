@@ -6,7 +6,7 @@ const ReportedUsers = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:9002/api/admin/reportedUsers')
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/admin/reportedUsers`)
       .then((res) => {
         setReportedUsers(res.data);
       })

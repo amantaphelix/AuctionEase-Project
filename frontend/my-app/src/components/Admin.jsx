@@ -10,7 +10,7 @@ const Admin = () => {
   useEffect(() => {
     // Fetch the list of registered users from the server
     axios
-      .get('http://localhost:9002/users')
+      .get(`${process.env.REACT_APP_API_BASE_URL}/users`)
       .then((res) => {
         setUsers(res.data);
       })
@@ -21,7 +21,7 @@ const Admin = () => {
 
   const handleBlockUser = (userId) => {
     axios
-      .post(`http://localhost:9002/blockUser/${userId}`)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/blockUser/${userId}`)
       .then((res) => {
         console.log('User blocked successfully');
         window.alert('User blocked successfully');
@@ -39,7 +39,7 @@ const Admin = () => {
   
   const handleUnblockUser = (userId) => {
     axios
-      .post(`http://localhost:9002/unblockUser/${userId}`)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/unblockUser/${userId}`)
       .then((res) => {
         console.log('User unblocked successfully');
         window.alert('User unblocked successfully');
@@ -60,7 +60,7 @@ const Admin = () => {
 
   const handleDeleteUser = (userId) => {
     axios
-      .delete(`http://localhost:9002/delete/${userId}`)
+      .delete(`${process.env.REACT_APP_API_BASE_URL}/delete/${userId}`)
       .then((response) => {
         console.log('User deleted successfully');
         window.alert('User deleted successfully');

@@ -19,7 +19,7 @@ const Sell = () => {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:9002/api/sell', {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/sell`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -50,7 +50,7 @@ const Sell = () => {
   const handleDelete = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:9002/api/deleteBid/${productId}`, {
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/deleteBid/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

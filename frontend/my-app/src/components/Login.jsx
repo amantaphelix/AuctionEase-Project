@@ -29,7 +29,7 @@ const Login = ({ setLoginUser,setIsAdmin }) => {
         navigate('/Admin');
       } else {
         axios
-          .post('http://localhost:9002/api/login', user)
+          .post(`${process.env.REACT_APP_API_BASE_URL}/api/login`, user)
           .then((res) => {
             const { message, token, blocked } = res.data;
             if (blocked) {
@@ -58,7 +58,7 @@ const Login = ({ setLoginUser,setIsAdmin }) => {
        
         const newPassword = generateRandomPassword(12);
         axios
-          .post('http://localhost:9002/api/forgotpassword', { email: user.email ,newPassword})
+          .post(`${process.env.REACT_APP_API_BASE_URL}/api/forgotpassword`, { email: user.email ,newPassword})
           .then((res) => {
             alert(res.data.message); // Alert message from the backend
           })

@@ -11,7 +11,7 @@ const ViewUser = ({ match }) => {
     const fetchProducts = async () => {
       try {
         console.log(userId)
-        const response = await axios.get(`http://localhost:9002/api/viewuser/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/viewuser/${userId}`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -22,7 +22,7 @@ const ViewUser = ({ match }) => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.delete(`http://localhost:9002/api/deleteBid/${productId}`);
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/deleteBid/${productId}`);
       setProducts(products.filter((product) => product._id !== productId));
     } catch (error) {
       console.error('Error deleting product:', error);

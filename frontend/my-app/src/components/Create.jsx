@@ -51,7 +51,7 @@ const Create = () => { // Changed from edit to Edit
     const token = localStorage.getItem('token');
   
     try {
-      const response = await fetch('http://localhost:9002/api/addBid', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/addBid`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

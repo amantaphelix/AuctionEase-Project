@@ -21,7 +21,7 @@ const Profile = ({ userId }) => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:9002/api/profile', {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/profile`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -40,7 +40,7 @@ const Profile = ({ userId }) => {
     const fetchBiddedProducts = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:9002/api/biddedProducts', {
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/biddedProducts`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -54,7 +54,7 @@ const Profile = ({ userId }) => {
     const fetchWinningBiddedProducts = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:9002/api/winningBiddedProducts', {
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/winningBiddedProducts`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -84,7 +84,7 @@ const Profile = ({ userId }) => {
     const handleSubmitPassword = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.post('http://localhost:9002/api/checkPassword', {
+            const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/checkPassword`, {
                 password: currentPassword
             }, {
                 headers: {
@@ -114,7 +114,7 @@ const Profile = ({ userId }) => {
                 return;
             }
 
-            await axios.put('http://localhost:9002/api/updatePassword', {
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/updatePassword`, {
                 password: newPassword
             }, {
                 headers: {

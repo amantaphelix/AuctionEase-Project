@@ -20,7 +20,7 @@ const EditSell = () => {
     const fetchProduct = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:9002/api/productdescription/${id}`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/productdescription/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -71,7 +71,7 @@ const EditSell = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:9002/api/modifyBid/${id}`, product, {
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/modifyBid/${id}`, product, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

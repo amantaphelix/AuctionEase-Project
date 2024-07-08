@@ -76,7 +76,7 @@ const ProductDescriptionPage = () => {
 
   const fetchProductDetails = async () => {
     try {
-      const productResponse = await axios.get(`http://localhost:9002/api/productdescription/${id}`);
+      const productResponse = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/productdescription/${id}`);
       const productData = productResponse.data;
       setProduct(productData);
       calculateRemainingTime(productData.endTime);
@@ -106,7 +106,7 @@ const ProductDescriptionPage = () => {
   
   const fetchBiddingHistory = async () => {
     try {
-      const response = await axios.get(`http://localhost:9002/api/history/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/history/${id}`);
       setUserBids(response.data.biddingHistory);
     } catch (error) {
       console.error("Error fetching bidding history:", error);
@@ -115,7 +115,7 @@ const ProductDescriptionPage = () => {
 
   const fetchWinningBid = async () => {
     try {
-      const response = await axios.get(`http://localhost:9002/api/getWinningBid/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/getWinningBid/${id}`);
       setWinningBid(response.data.winningBid);
     } catch (error) {
       console.error("Error fetching winning bid:", error);
@@ -124,7 +124,7 @@ const ProductDescriptionPage = () => {
 
   const sendEmails = async (productId) => {
     try {
-      const response = await axios.post(`http://localhost:9002/api/sendEmails/${productId}`);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/sendEmails/${productId}`);
       console.log(response.data); // Assuming the response contains a message confirming the emails were sent successfully
       // Optionally, you can handle UI updates or display a success message to the user
     } catch (error) {
@@ -152,7 +152,7 @@ const ProductDescriptionPage = () => {
   const handleSubmitReport = async (reason) => {
     try {
       // Call the backend endpoint to report the user
-      await axios.post(`http://localhost:9002/api/reportUser/${id}`);
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/reportUser/${id}`);
   
       // Close the report dialog
       handleCloseReportDialog();
@@ -178,7 +178,7 @@ const ProductDescriptionPage = () => {
     const token = localStorage.getItem('token');
   
     try {
-      const response = await axios.post(`http://localhost:9002/api/bids/${id}`, requestBody, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/bids/${id}`, requestBody, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
